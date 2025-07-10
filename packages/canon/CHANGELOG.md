@@ -1,5 +1,16 @@
 # @backstage/canon
 
+## 0.6.0-next.2
+
+### Minor Changes
+
+- 8fd6fcb: We are renaming @backstage/canon into @backstage/ui. As part of this move we are renaming all class names and CSS variables to follow the new name. "--canon" prefix is becoming "--bui" and all component class names starting with ".canon" will now start with ".bui"
+
+### Patch Changes
+
+- 9c17305: Fix scrolling width and height on ScrollArea component in Canon.
+- 390ea20: Export Card and Skeleton components.
+
 ## 0.6.0-next.1
 
 ### Minor Changes

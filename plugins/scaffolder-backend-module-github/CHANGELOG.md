@@ -1,5 +1,11 @@
 # @backstage/plugin-scaffolder-backend-module-github
 
+## 0.8.1-next.3
+
+### Patch Changes
+
+- 38db3eb: Fix typo in `InputError`
+
 ## 0.8.1-next.2
 
 ### Patch Changes
