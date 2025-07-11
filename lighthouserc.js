@@ -50,7 +50,7 @@ module.exports = {
         // need to disable storage reset because of auth
         disableStorageReset: true,
         output: ['html', 'json'],
-        outputPath: './.lighthouseci/reports',
+        /* outputPath: './.lighthouseci/reports', */
         preset: 'desktop',
       },
       startServerCommand: 'yarn start',
