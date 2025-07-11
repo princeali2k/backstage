@@ -35,7 +35,7 @@ jobs:
           cache-prefix: ${{ runner.os }}-v20.x
       - name: run Lighthouse CI
         run: |
-          yarn dlx @lhci/cli@0.11.x autorun --output=./lhci-results
+          yarn dlx @lhci/cli@0.11.x autorun
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Upload Lighthouse Report
