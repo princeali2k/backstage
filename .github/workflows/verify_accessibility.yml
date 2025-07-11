@@ -35,10 +35,19 @@ jobs:
       - name: Install dependencies
         run: yarn install
 
+      - name: Build app
+        run: yarn build
+
+      - name: Check if server is reachable
+        run: curl -I http://localhost:3000 || echo "Server not reachable"
+
       - name: Run Lighthouse CI
         run: yarn dlx @lhci/cli@0.11.x autorun
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Print LHCI logs
+        run: cat .lighthouseci/*log* || echo "No LHCI logs found"
 
       - name: List Lighthouse Report Files
         run: ls -l ./.lighthouseci/reports || echo "No report directory found"
