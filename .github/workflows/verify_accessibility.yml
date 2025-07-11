@@ -42,6 +42,6 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: lighthouse-report
-          path: ./lhci-results
+          path: ./.lighthouseci/reports
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
