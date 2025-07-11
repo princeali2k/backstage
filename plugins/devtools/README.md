@@ -1,6 +1,6 @@
 # DevTools
 
-Welcome to the DevTools plugin! This plugin helps elevate useful information about a Backstage instance through the frontend, which can be helpful for an integrator for troubleshooting, reviewing, and understanding their installation.
+Welcome to this DevTools plugin! This plugin helps elevate useful information about a Backstage instance through the frontend, which can be helpful for an integrator for troubleshooting, reviewing, and understanding their installation.
 
 ## Features
 

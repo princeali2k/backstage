@@ -1,6 +1,5 @@
 name: Accessibility
 on:
-  # NOTE: If you change these you must update verify_accessibility-noop.yml as well
   pull_request:
     branches: [master]
     paths:
@@ -14,34 +13,46 @@ on:
       - 'plugins/scaffolder-react/src/**'
       - 'plugins/search/src/**'
       - 'plugins/search-react/src/**'
+
 jobs:
   lhci:
     name: Accessibility
     runs-on: ubuntu-latest
     steps:
       - name: Harden Runner
-        uses: step-security/harden-runner@cb605e52c26070c328afc4562f0b4ada7618a84e # v2.10.4
+        uses: step-security/harden-runner@v2.10.4
         with:
           egress-policy: audit
 
-      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+      - name: Checkout code
+        uses: actions/checkout@v4.2.2
+
       - name: Use Node.js 20.x
-        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
+        uses: actions/setup-node@v4.4.0
         with:
           node-version: 20.x
-      - name: yarn install
-        uses: backstage/actions/yarn-install@b3c1841fd69e1658ac631afafd0fb140a2309024 # v0.6.17
-        with:
-          cache-prefix: ${{ runner.os }}-v20.x
-      - name: run Lighthouse CI
-        run: |
-          yarn dlx @lhci/cli@0.11.x autorun --output=./lhci-results
+
+      - name: Install dependencies
+        run: yarn install
+
+      - name: Check if server is reachable
+        run: curl -I http://localhost:3000 || echo "Server not reachable"
+
+      - name: Run Lighthouse CI
+        run: yarn dlx @lhci/cli@0.11.x autorun
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Print LHCI logs
+        run: cat .lighthouseci/*log* || echo "No LHCI logs found"
+
+      - name: List Lighthouse Report Files
+        run: ls -l ./.lighthouseci/reports || echo "No report directory found"
+
       - name: Upload Lighthouse Report
         uses: actions/upload-artifact@v4
         with:
           name: lighthouse-report
-          path: ./lhci-results
+          path: ./.lighthouseci/reports
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

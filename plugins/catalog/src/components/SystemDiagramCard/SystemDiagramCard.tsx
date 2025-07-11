@@ -82,7 +82,7 @@ const useStyles = makeStyles(
   { name: 'PluginCatalogSystemDiagramCard' },
 );
 
-// Simplifies the diagram output by hiding the default namespace and kind
+// Simplifies the diagram output by hiding default namespace and kind
 function readableEntityName(
   ref:
     | Entity

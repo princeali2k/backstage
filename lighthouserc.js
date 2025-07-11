@@ -50,11 +50,11 @@ module.exports = {
         // need to disable storage reset because of auth
         disableStorageReset: true,
         output: ['html', 'json'],
-        outputPath: './.lighthouseci/reports',
+        /* outputPath: './.lighthouseci/reports', */
         preset: 'desktop',
       },
       startServerCommand: 'yarn start',
-      startServerReadyPattern: 'webpack compiled successfully',
+      startServerReadyPattern: 'Project is running at:',
       startServerReadyTimeout: 600000,
       numberOfRuns: 1,
       puppeteerScript: './.lighthouseci/scripts/guest-auth.js',
