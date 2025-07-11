@@ -35,9 +35,6 @@ jobs:
       - name: Install dependencies
         run: yarn install
 
-      - name: Build app
-        run: yarn build
-
       - name: Check if server is reachable
         run: curl -I http://localhost:3000 || echo "Server not reachable"
 
